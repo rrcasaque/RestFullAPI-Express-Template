@@ -1,0 +1,509 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Sua API de Educação",
+    "description": "API para gerenciar alunos, disciplinas e turmas",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "seu-email@example.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "aluno",
+      "description": "Endpoints relacionados a alunos"
+    },
+    {
+      "name": "disciplina",
+      "description": "Endpoints relacionados a disciplinas"
+    },
+    {
+      "name": "turma",
+      "description": "Endpoints relacionados a turmas"
+    }
+  ],
+  "paths": {
+    "/aluno": {
+      "post": {
+        "tags": ["aluno"],
+        "summary": "Cadastrar aluno",
+        "operationId": "createAluno",
+        "requestBody": {
+          "description": "Objeto de aluno a ser cadastrado",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Aluno"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aluno"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["aluno"],
+        "summary": "Listar todos os alunos",
+        "operationId": "getAllAlunos",
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Aluno"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aluno/{id}": {
+      "get": {
+        "tags": ["aluno"],
+        "summary": "Obter aluno por ID",
+        "operationId": "getAlunoById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do aluno a ser obtido",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Aluno"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      },
+      "put": {
+        "tags": ["aluno"],
+        "summary": "Atualizar aluno por ID",
+        "operationId": "updateAluno",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do aluno a ser atualizado",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto de aluno a ser atualizado",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Aluno"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida"
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["aluno"],
+        "summary": "Excluir aluno por ID",
+        "operationId": "deleteAluno",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do aluno a ser excluído",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Operação bem-sucedida (sem conteúdo)"
+          },
+          "404": {
+            "description": "Aluno não encontrado"
+          }
+        }
+      }
+    },
+    "/disciplina": {
+      "post": {
+        "tags": ["disciplina"],
+        "summary": "Cadastrar disciplina",
+        "operationId": "createDisciplina",
+        "requestBody": {
+          "description": "Objeto de disciplina a ser cadastrado",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Disciplina"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Disciplina"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["disciplina"],
+        "summary": "Listar todas as disciplinas",
+        "operationId": "getAllDisciplinas",
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Disciplina"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disciplina/{id}": {
+      "get": {
+        "tags": ["disciplina"],
+        "summary": "Obter disciplina por ID",
+        "operationId": "getDisciplinaById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da disciplina a ser obtida",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Disciplina"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disciplina não encontrada"
+          }
+        }
+      },
+      "put": {
+        "tags": ["disciplina"],
+        "summary": "Atualizar disciplina por ID",
+        "operationId": "updateDisciplina",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da disciplina a ser atualizada",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto de disciplina a ser atualizada",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Disciplina"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida"
+          },
+          "404": {
+            "description": "Disciplina não encontrada"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["disciplina"],
+        "summary": "Excluir disciplina por ID",
+        "operationId": "deleteDisciplina",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da disciplina a ser excluída",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Operação bem-sucedida (sem conteúdo)"
+          },
+          "404": {
+            "description": "Disciplina não encontrada"
+          }
+        }
+      }
+    },
+    "/turma": {
+      "post": {
+        "tags": ["turma"],
+        "summary": "Cadastrar turma",
+        "operationId": "createTurma",
+        "requestBody": {
+          "description": "Objeto de turma a ser cadastrada",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Turma"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Turma"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["turma"],
+        "summary": "Listar todas as turmas",
+        "operationId": "getAllTurmas",
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Turma"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/turma/{id}": {
+      "get": {
+        "tags": ["turma"],
+        "summary": "Obter turma por ID",
+        "operationId": "getTurmaById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da turma a ser obtida",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Turma"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Turma não encontrada"
+          }
+        }
+      },
+      "put": {
+        "tags": ["turma"],
+        "summary": "Atualizar turma por ID",
+        "operationId": "updateTurma",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da turma a ser atualizada",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto de turma a ser atualizada",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Turma"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Operação bem-sucedida"
+          },
+          "404": {
+            "description": "Turma não encontrada"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["turma"],
+        "summary": "Excluir turma por ID",
+        "operationId": "deleteTurma",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da turma a ser excluída",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Operação bem-sucedida (sem conteúdo)"
+          },
+          "404": {
+            "description": "Turma não encontrada"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Aluno": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "registroAcademico": {
+            "type": "integer"
+          },
+          "turmaId": {
+            "type": "integer"
+          },
+          "disciplinasId": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "Disciplina": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Turma": {
+        "type": "object",
+        "properties": {
+          "semestre": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
