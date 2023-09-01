@@ -6,13 +6,13 @@ Bem-vindo à documentação da **API de Educação**, uma poderosa API RESTful p
 
 A documentação completa da API, incluindo detalhes sobre os recursos, endpoints e exemplos de uso, está disponível em [localhost:3000/docs](http://localhost:3000/docs).
 
-## Instruções de Uso
-
-Para começar a usar a **API de Educação**, siga estas instruções:
-
 ## Licença
 
 Esta API é disponibilizada sob a Licença MIT, uma licença de código aberto amplamente reconhecida e utilizada na comunidade de desenvolvimento.
+
+## Instruções de Uso
+
+Para começar a usar a **API de Educação**, siga estas instruções:
 
 ### Pré-requisitos
 
